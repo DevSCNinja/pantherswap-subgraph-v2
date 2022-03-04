@@ -1,0 +1,51 @@
+{
+  "name": "pancake-subgraph",
+  "description": "PancakeSwap Subgraph",
+  "version": "1.0.0",
+  "repository": "git@github.com:pancakeswap/pancake-subgraph.git",
+  "author": "PancakeSwap",
+  "license": "MIT",
+  "scripts": {
+    "codegen:blocks": "graph codegen subgraphs/blocks.yaml",
+    "codegen:dexcandles": "graph codegen subgraphs/dexcandles.yaml",
+    "codegen:exchange": "graph codegen subgraphs/exchange.yaml",
+    "codegen:exchange-lite": "graph codegen subgraphs/exchange-lite.yaml",
+    "codegen:profile": "graph codegen subgraphs/profile.yaml",
+    "codegen:timelock": "graph codegen subgraphs/timelock.yaml",
+    "build:blocks": "graph build subgraphs/blocks.yaml",
+    "build:dexcandles": "graph build subgraphs/dexcandles.yaml",
+    "build:exchange": "graph build subgraphs/exchange.yaml",
+    "build:exchange-lite": "graph build subgraphs/exchange-lite.yaml",
+    "build:profile": "graph build subgraphs/profile.yaml",
+    "build:timelock": "graph build subgraphs/timelock.yaml",
+    "create:exchange-lite": "graph create panther/exchange-lite --node https://api.bscgraph.org/deploy/",
+    "deploy-remote:exchange-lite": "graph deploy --node https://api.bscgraph.org/deploy/ --ipfs https://ipfs.infura.io:5001 panther/exchange-lite subgraphs/exchange-lite.yaml",
+    "deploy:blocks": "graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ pancakeswap/blocks subgraphs/blocks.yaml",
+    "deploy:dexcandles": "graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ pancakeswap/dex-candles subgraphs/dexcandles.yaml",
+    "deploy:exchange": "graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ pancakeswap/exchange subgraphs/exchange.yaml",
+    "deploy:exchange-lite": "graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ pancakeswap/exchange-lite subgraphs/exchange-lite.yaml",
+    "deploy:profile": "graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ pancakeswap/profile subgraphs/profile.yaml",
+    "deploy:timelock": "graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ pancakeswap/timelock subgraphs/timelock.yaml",
+    "format": "prettier --write '*/**/*.{js,ts}'",
+    "lint": "eslint '*/**/*.{js,ts}'"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn format",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^12.0.0",
+    "@commitlint/config-conventional": "^12.0.0",
+    "@graphprotocol/graph-cli": "^0.20.0",
+    "@graphprotocol/graph-ts": "^0.20.0",
+    "@typescript-eslint/eslint-plugin": "^4.16.1",
+    "@typescript-eslint/parser": "^4.16.1",
+    "eslint": "^7.20.0",
+    "eslint-config-prettier": "^7.2.0",
+    "husky": "^4.3.8",
+    "prettier": "^2.2.1",
+    "typescript": "^4.2.2"
+  }
+}
